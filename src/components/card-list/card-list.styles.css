@@ -1,0 +1,7 @@
+.card-list {
+    display: inline-flexbox;
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    margin: 45px auto;
+}

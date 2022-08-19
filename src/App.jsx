@@ -34,10 +34,14 @@ class App extends Component {
             });
     }
     render() {
-        const matchedValue = this.state.monsters.filter((item) => { return (item.name.toLowerCase()).includes(this.state.searchValue.toLowerCase()) });
+        const { monsters, searchValue } = this.state;
+        const { handleChange } = this;
+        const matchedValue = monsters.filter((item) => { return (item.name.toLowerCase()).includes(searchValue.toLowerCase()) });
         return (
+
             <div className='App'>
-                <SearchBox className='monsters-search-box' onChangeHandler={this.handleChange} placeHolder='monster search' />
+                <h1>Monsters Rolodex</h1>
+                <SearchBox className='monsters-search-box' onChangeHandler={handleChange} placeHolder='monster search' />
                 <CardList monsters={matchedValue} />
 
             </div>
