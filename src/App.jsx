@@ -20,6 +20,9 @@ const App = () => {
         setSearchValue(searchValueString);
         console.log(searchValue);
     };
+
+    console.log("React18 double Render");
+
     return (
 
         <div className='App'>
