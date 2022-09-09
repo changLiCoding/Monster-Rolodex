@@ -9,3 +9,18 @@ body {
             rgba(0, 128, 128, 1) 100%);
     text-align: center;
 }
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.App {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Bigelow Rules';
+    font-size: 72px;
+    color: #0ccac4;
+}
