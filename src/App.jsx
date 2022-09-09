@@ -3,6 +3,7 @@ import CardList from "./components/card-list/card-list.component";
 import SearchBox from './components/search-box/search-box.component';
 import "./App.css"
 
+
 const App = () => {
     const [searchValue, setSearchValue] = useState('');
     const [monsters, setMonsters] = useState([]);
