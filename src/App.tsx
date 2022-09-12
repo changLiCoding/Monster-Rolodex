@@ -1,22 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from './components/search-box/search-box.component';
+
+import { getData } from './utils/data.utils';
 import "./App.css"
 
+export type Monster = {
+    id: string;
+    name: string;
+    email: string;
+}
+
+// type MonsterItemType = {
+//     name: string;
+// }
 
 const App = () => {
     const [searchValue, setSearchValue] = useState('');
-    const [monsters, setMonsters] = useState([]);
+    const [monsters, setMonsters] = useState<Monster[]>([]);
 
     const matchedValue = monsters.filter((item) => { return (item.name.toLowerCase()).includes(searchValue.toLowerCase()) });
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then((response) => response.json())
-            .then((user) => setMonsters(user));
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then((response) => response.json())
+        //     .then((user) => setMonsters(user));
+        const fetchUsers = async () => {
+            const users = await getData<Monster[]>('https://jsonplaceholder.typicode.com/users');
+            setMonsters(users);
+        };
+        fetchUsers();
     }, []);
-
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const searchValueString = event.target.value;
         setSearchValue(searchValueString);
         console.log(searchValue);
@@ -28,7 +43,7 @@ const App = () => {
 
         <div className='App'>
             <h1>Monsters Rolodex</h1>
-            <SearchBox className='monsters-search-box' onChangeHandler={handleChange} placeHolder='monster search' />
+            <SearchBox className='monsters-search-box' onChangeHandler={handleChange} placeholder='monster search' />
             <CardList monsters={matchedValue} />
 
         </div>

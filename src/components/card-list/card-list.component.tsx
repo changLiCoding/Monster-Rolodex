@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import Card from '../card/card.component';
 import './card-list.styles.css';
 
-const CardList = (props) => {
-    const { monsters } = props;
+import { Monster } from '../../App'
+
+type MonsterinPropsType = {
+    monsters: Monster[];
+}
+
+
+const CardList = ({ monsters }: MonsterinPropsType) => {
 
     return (
-        <div className='card-list' key={monsters.id}>
+        <div className='card-list'>
             {(monsters).map((monster) => {
                 return (
                     <Card monster={monster} key={monster.id} />

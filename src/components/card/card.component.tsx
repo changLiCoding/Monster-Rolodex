@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import './card.styles.css'
 
-const Card = (props) => {
+import { Monster } from '../../App'
+
+type MonsterinPropsType = {
+    monster: Monster;
+}
+
+const Card = (props: MonsterinPropsType) => {
     const { id, name, email } = props.monster;
 
     return (
